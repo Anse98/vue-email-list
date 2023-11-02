@@ -5,32 +5,35 @@ createApp({
     return {
       emails: [],
       email: '',
+      title: 'Email List',
+      max: 10,
     }
   },
 
   methods: {
-    getEmail() {
+    fillEmails(max) {
 
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < max; i++) {
 
         axios
-        .get('https://flynn.boolean.careers/exercises/api/random/mail')
-        .then((param) => {
+          .get('https://flynn.boolean.careers/exercises/api/random/mail')
+          .then((param) => {
 
-          const emailAddress = param.data.response;
+            const emailAddress = param.data.response;
 
-          this.email = emailAddress;
+            this.email = emailAddress;
 
-          this.emails.push(emailAddress);
+            this.emails.push(emailAddress);
 
           })
-      }
-    }
+      
+       }
+    },
   },
 
   created() {
 
-    this.getEmail();
+    this.fillEmails(this.max);
 
   }
 }).mount('#app')

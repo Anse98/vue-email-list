@@ -4,15 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vue Email List</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://kit.fontawesome.com/f1f0c66429.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
 
   <div id="app">
-    <ul>
-      <li v-for="email in emails">{{email}}</li>
-    </ul>
+    <div class="email-list">
+      <h1 class="title">{{title}}</h1>
+      <ol v-if="emails.length === max">
+        <li 
+        v-for=" email in emails "
+        >{{email}}
+        </li>
+      </ol>
+      <p class="loading" v-else> <i class="fa-solid fa-spinner"></i> </p>
+    </div>
   </div>
 
   <script src="./app.js"></script>
